@@ -6,8 +6,8 @@ set $left k
 set $right l
 
 # Mod4 is Win
-set $mod Mod1
-# set $mod Mod4
+# set $mod Mod1
+set $mod Mod4
 # alt is used by many good applications such as weechat and readline
 
 floating_modifier $mod
@@ -150,7 +150,7 @@ exec --no-startup-id dropbox-cli start
 # aur/dropbox-cli; dropbox-cli status
 
 # create /.scrot first
-set $scrot_options '%b-%d-%y_%H-%m-%S_$wx$h.png' -e 'mv $f /.scrot/'
+set $scrot_options '%b-%d-%y_%H-%m-%S_$wx$h.png' -e 'mv $f /dbx/scrot/'
 # scrot parses with strftime(3)
 bindsym Print exec --no-startup-id scrot $scrot_options #&& flash-screen
 bindsym --release Shift+Print exec --no-startup-id scrot --select $scrot_options #&& flash-screen
@@ -277,6 +277,13 @@ exec --no-startup-id xset -dpms
 
 exec --no-startup-id kupfer
 exec --no-startup-id xrdb -load /usr/local/etc/Xresources
+
+exec --no-startup-id clipmenud &
+bindsym ctrl+$mod+c exec --no-startup-id clipmenu # aur/clipmenu
+
+bindsym Ctrl+$mod+p exec --no-startup-id passmenu # community/pass
+# source /usr/local/etc/env.d/pass in /usr/bin/passmenu
+# to set PASSWORD_STORE_DIR for non-shell execution
 
 # vi: ft=sh
 # i3
